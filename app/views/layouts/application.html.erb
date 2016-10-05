@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <base href="<%=root_url%>">
 </head>
 <body>
 		
@@ -12,7 +13,7 @@
 		<div id="site-content">
 			<header class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="<%=root_url%>" id="branding">
 						<img src="logo.png" alt="" class="logo">
 						<div class="logo-copy">
 							<h1 class="site-title">Company Name</h1>
@@ -24,9 +25,13 @@
 						<ul class="menu">
 							<li class="menu-item current-menu-item"><a href="">Home</a></li>
 							<li class="menu-item"><a href="review.html">Movie reviews</a></li>
+							<% if !current_user %>
 							<li class="menu-item"><%=link_to t("application.sign_up"),new_user_registration_url%></li>
 							<li class="menu-item"><%=link_to t("application.login"),new_user_session_url%></li>
 							<li class="menu-item"><a href="contact.html">Contact</a></li>
+							<% else %>
+							<li class="menu-item"><%=link_to t("application.logout"),destroy_user_session_url, method: :delete%></li>
+							<% end %>
 						</ul> <!-- .menu -->
 						<form action="#" class="search-form">
 							<input type="text" placeholder="Search...">
@@ -37,7 +42,11 @@
 					<div class="mobile-navigation"></div>
 				</div>
 			</header>
-			<%= yield %>
+			<main class="main-content">
+				<div class="container">
+					<%= yield %>
+				</div>
+			</main>
 			<footer class="site-footer">
 				<div class="container">
 					<div class="row">
