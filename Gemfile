@@ -18,6 +18,7 @@ gem "sdoc", "0.4.0", group: :doc
 gem 'devise'
 gem 'bootsy'
 gem 'font-awesome-sass'
+gem 'sprockets-rails', '2.3.3'
 group :development, :test do
   gem "sqlite3"
   gem "web-console", "2.0.0.beta3"
