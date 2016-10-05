@@ -24,12 +24,13 @@
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item current-menu-item"><a href="">Home</a></li>
-							<li class="menu-item"><a href="review.html">Movie reviews</a></li>
+							<li class="menu-item"><%=link_to t("application.reviews"),reviews_url%></li>
 							<% if !current_user %>
 							<li class="menu-item"><%=link_to t("application.sign_up"),new_user_registration_url%></li>
 							<li class="menu-item"><%=link_to t("application.login"),new_user_session_url%></li>
 							<li class="menu-item"><a href="contact.html">Contact</a></li>
 							<% else %>
+							<li class="menu-item"><%=link_to t("application.new_review"),new_review_url%></li>
 							<li class="menu-item"><%=link_to t("application.profile"),profile_url%></li>
 							<li class="menu-item"><%=link_to t("application.logout"),destroy_user_session_url, method: :delete%></li>
 							<% end %>

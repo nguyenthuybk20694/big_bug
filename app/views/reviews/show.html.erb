@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+<h1><%=@review.title%></h1>
+<figure class="movie-poster"><%=image_tag(@review.image,:class => "detail_image")%></figure>
+<%=@review.content.html_safe%>
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>
