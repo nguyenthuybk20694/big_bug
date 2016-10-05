@@ -13,7 +13,7 @@
 		<div id="site-content">
 			<header class="site-header">
 				<div class="container">
-					<a href="<%=root_url%>" id="branding">
+					<a href="" id="branding">
 						<img src="logo.png" alt="" class="logo">
 						<div class="logo-copy">
 							<h1 class="site-title">Company Name</h1>
@@ -30,6 +30,7 @@
 							<li class="menu-item"><%=link_to t("application.login"),new_user_session_url%></li>
 							<li class="menu-item"><a href="contact.html">Contact</a></li>
 							<% else %>
+							<li class="menu-item"><%=link_to t("application.profile"),profile_url%></li>
 							<li class="menu-item"><%=link_to t("application.logout"),destroy_user_session_url, method: :delete%></li>
 							<% end %>
 						</ul> <!-- .menu -->
@@ -44,6 +45,14 @@
 			</header>
 			<main class="main-content">
 				<div class="container">
+					<% flash.each do |name, msg| %>
+  					<% if msg.is_a?(String) %>
+    					<div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+      					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      					<%= content_tag :div, msg, :id => "flash_#{name}" %>
+    					</div>
+  					<% end %>
+					<% end %>
 					<%= yield %>
 				</div>
 			</main>
