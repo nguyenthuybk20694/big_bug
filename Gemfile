@@ -16,7 +16,8 @@ gem "turbolinks", "2.3.0"
 gem "jbuilder", "2.2.3"
 gem "sdoc", "0.4.0", group: :doc
 gem 'devise'
-
+gem 'bootsy'
+gem 'font-awesome-sass'
 group :development, :test do
   gem "sqlite3"
   gem "web-console", "2.0.0.beta3"
