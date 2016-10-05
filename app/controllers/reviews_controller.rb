@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:show]
+  before_action :check_owned, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
   # GET /reviews
   # GET /reviews.json
@@ -24,7 +25,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = current_user.reviews.new(review_params)
 
     respond_to do |format|
       if @review.save
@@ -62,12 +63,20 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
     end
+    
+    def check_owned
+      @review = current_user.reviews.find_by_id params[:id]
+      if @review.nil?
+        respond_to do |format|
+          format.html { redirect_to reviews_url, notice: 'You can not edit this review.' }
+          format.json { head :no_content }
+        end
+      end
+    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
       params.require(:review).permit(:image, :title, :content,:created_at)
     end

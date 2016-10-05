@@ -1,4 +1,5 @@
 class Review < ActiveRecord::Base
+	belongs_to :user
 	include Bootsy::Container
 	
     validates :title,  presence: true, length: { minimum: 1 }
