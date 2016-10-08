@@ -49,7 +49,9 @@ body {
   margin: 0; }
 
 a {
-  background: transparent; }
+  background: transparent; 
+  
+}
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
@@ -1394,13 +1396,16 @@ ul.arrow {
   #branding .logo, #branding .logo-copy {
     display: inline-block; }
   #branding .logo {
-    margin-right: 10px; }
+    margin-right: 10px; 
+    margin-top: -35px;
+    
+  }
   #branding .site-title {
     margin: 0;
     text-transform: uppercase;
     color: white;
-    font-size: 16px;
-    font-size: 1.0666666667em; }
+    font-size: 17px;
+    font-size: 2.0em; }
     #branding .site-title a {
       color: white; }
   #branding .site-description {
@@ -1700,4 +1705,6 @@ ul.arrow {
     .site-footer a:hover {
       color: #ffaa3c; }
   .site-footer .colophon {
-    padding-top: 30px; }
+    padding-top: 30px; 
+    margin-left: 89px;
+  }
