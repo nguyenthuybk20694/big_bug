@@ -19,6 +19,8 @@ gem 'devise'
 gem 'bootsy'
 gem 'font-awesome-sass'
 gem 'sprockets-rails', '2.3.3'
+gem 'omniauth-facebook'
+gem "omniauth-google-oauth2", "~> 0.2.1"
 group :development, :test do
   gem "sqlite3"
   gem "web-console", "2.0.0.beta3"
