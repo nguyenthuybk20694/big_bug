@@ -1,5 +1,6 @@
 class Review < ActiveRecord::Base
 	belongs_to :user
+	has_many :comments
 	include Bootsy::Container
 	
     validates :title,  presence: true, length: { minimum: 1 }
