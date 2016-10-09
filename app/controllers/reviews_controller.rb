@@ -1,11 +1,11 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show]
+  before_action :set_review, only: [:show, :like, :unlike]
   before_action :check_owned, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :show]
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = Review.search(params[:search])
   end
 
   # GET /reviews/1
@@ -59,6 +59,22 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+  
+  def like
+    @review.liked_by current_user
+    respond_to do |format|
+      format.html { redirect_to @review }
+      format.js { render layout: false }
+    end
+  end
+  
+  def unlike
+    @review.unliked_by current_user
+    respond_to do |format|
+      format.html { redirect_to @review }
+      format.js { render layout: false }
     end
   end
 
