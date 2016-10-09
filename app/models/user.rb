@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  acts_as_voter
   has_many :reviews, dependent: :destroy
   has_many :comments
   mount_uploader :avatar, AvatarUploader
