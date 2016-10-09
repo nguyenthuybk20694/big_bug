@@ -8,18 +8,20 @@
         <%=@review.content.html_safe%>
         <% @review.comments.each do |c| %>
             <p>
-                <%= c.user.email %>: 
-                
                 <%= c.body %>
             </p>
         <% end %>
-        <%= form_for [@review, @comment ||= Comment.new] do |f| %>
-            <div class="field">
-                <%= f.text_area :body %>
-            </div>
-            <div class="actions">
-                <%= f.submit %>
-            </div>
+        <% if current_user %>
+            <%= form_for [@review, @comment ||= Comment.new] do |f| %>
+                <div class="field">
+                    <%= f.text_area :body %>
+                </div>
+                <div class="actions">
+                    <%= f.submit %>
+                </div>
+            <% end %>
+        <% else %>
+            <p style="color:red">dang nhap de comment</p>
         <% end %>
     </div>
 </div>
