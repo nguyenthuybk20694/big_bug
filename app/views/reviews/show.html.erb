@@ -5,6 +5,19 @@
     </div>
     <div class="col-md-6">
         <h1><%=@review.title%></h1>
+        <div class="row">
+          <div class="vote_count col-md-1">
+            <%= @review.get_likes.size %>
+          </div> 
+        
+          <div class="votes col-md-2">
+            <% if current_user.liked? @review %>
+              <%= link_to "unlike", unlike_review_path(@review), method: :get, remote: true, class: 'unlike_review btn btn-warning' %>
+            <% else %>
+              <%= link_to "like", like_review_path(@review), method: :get, remote: true, class: 'like_review btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
         <%=@review.content.html_safe%>
         <% @review.comments.each do |c| %>
             <p>
