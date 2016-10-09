@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20161008200906) do
-=======
 ActiveRecord::Schema.define(version: 20161009045134) do
->>>>>>> acts_as_votable
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
