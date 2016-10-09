@@ -21,9 +21,9 @@ pre {
 a {
   color: #000;
 
-  &:visited {
-    color: #666;
-  }
+  // &:visited {
+  //   color: #666;
+  // }
 
   &:hover {
     text-decoration: none;
@@ -32,7 +32,8 @@ a {
 
 div {
   &.field, &.actions {
-    margin-bottom: 10px;
+      margin-bottom: 10px;
+    margin-top: 13px;
   }
 }
 
