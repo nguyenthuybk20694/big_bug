@@ -253,7 +253,7 @@ form input, form textarea, form select {
   padding: 10px;
   border-radius: 5px;
   outline: none; 
-  width: 83%;
+  /*width: 83%;*/
 }
 form select {
   -webkit-appearance: none;
