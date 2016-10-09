@@ -7,12 +7,11 @@
         <h1><%=@review.title%></h1>
         
         <%=@review.content.html_safe%>
-        <% @review.comments.each do |c| %>
-            <p>
-                <%= c.body %>
-            </p>
-        <% end %>
-        <br>
+        <!-<% @review.comments.each do |c| %>-->
+        <!--    <p>-->
+        <!--        <%= c.body %>-->
+        <!--    </p>-->
+        <!--<% end %>-->
         <br>
         
         <div class="row">
@@ -27,6 +26,18 @@
             <% end %>
           </div>
         </div>
+         <br>
+        <% @review.comments.each do |c| %>
+            <p>
+                <% if c.user %>
+                    <strong><%= c.user.name %> : </strong>
+                <% else %>
+                    <strong>noname : </strong>
+                <% end %>
+                
+                <%= c.body %>
+            </p>
+        <% end %>
         <% if current_user %>
             <%= form_for [@review, @comment ||= Comment.new] do |f| %>
                 <div class="field">
