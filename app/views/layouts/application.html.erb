@@ -28,8 +28,11 @@
 							<% if !current_user %>
 							<li class="menu-item <%=current_item_link new_user_registration_path%>"><%=link_to t("application.sign_up"),new_user_registration_path%></li>
 							<li class="menu-item <%=current_item_link new_user_session_path%>"><%=link_to t("application.login"),new_user_session_path%></li>
-							<li class="menu-item <%=current_item_link reviews_url%>"><a href="contact.html">Contact</a></li>
 							<% else %>
+							<% if current_user.is_admin %>
+								<li class="menu-item <%=current_item_link '/users'%>"><a href="/users">User</a></li>
+								<li class="menu-item <%=current_item_link '/manager_reviews'%>"><a href="/manager_reviews">Manager Reviews</a></li>
+							<%end%>
 							<li class="menu-item <%=current_item_link new_review_path%>"><%=link_to t("application.new_review"),new_review_path%></li>
 							<li class="menu-item <%=current_item_link profile_path%>"><%=link_to t("application.profile"),profile_path%></li>
 							<li class="menu-item <%=current_item_link destroy_user_session_url%>"><%=link_to t("application.logout"),destroy_user_session_url, method: :delete%></li>
@@ -38,6 +41,7 @@
 						<form action="#" class="search-form">
 							<input type="text" placeholder="Search...">
 							<button><i class="fa fa-search"></i></button>
+							<div class="" style="height: 38px;position: absolute;width: 35px;top: 50px;z-index: 10000;cursor: pointer;"></div>
 						</form>
 					</div> <!-- .main-navigation -->
 

@@ -6,4 +6,11 @@ module ApplicationHelper
         end
         css
     end
+    def avatar(url)
+      if url.length > 0
+        image_tag url
+      else
+        image_tag('default_avatar') 
+      end
+    end
 end

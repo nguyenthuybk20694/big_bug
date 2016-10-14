@@ -1,0 +1,23 @@
+
+<!--<%= image_tag @user.avatar%>-->
+
+<!--<br>-->
+<%= @user.name %>
+<div class="row profile">
+    <div class="profile-sidebar">
+        <div class="profile-userpic center">
+          <%= image_tag @user.avatar%>
+        </div>
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <%= @user.name %>
+          </div>
+          <div class="profile-usertitle-email">
+            <%= @user.email %>
+          </div>
+          <div class="btn">
+              <%= link_to " Edit", edit_user_registration_path, class: "btn btn-info" %>
+          </div>
+        </div>
+    </div>
+</div>
