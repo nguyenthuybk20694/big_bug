@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_account_update_params, if: :devise_controller?
  
   protected
- 
+  def require_admin
+      redirect_to root_path unless  current_user.is_admin
+  end
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
     	user_params.permit(:name, :email, :avatar, :password, :password_confirmation)

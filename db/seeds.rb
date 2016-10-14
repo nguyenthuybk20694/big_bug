@@ -1,4 +1,4 @@
-User.create email: "admin@admin.com",
-  password: "123456"
-User.create email: "user@gmail.com",
+User.create email: "admin@admin.com",name:"ducngoc",
+  password: "123456","is_admin":true
+User.create email: "user@gmail.com",name:"user1",
   password: "123456"
