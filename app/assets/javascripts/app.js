@@ -9,7 +9,7 @@
 		$(".menu-toggle").click(function(){
 			$(".mobile-navigation").slideToggle();
 		});
-		$(".search-form button").click(function(){
+		$(".search-form div").click(function(){
 			$(this).toggleClass("active");
 			var $parent = $(this).parent(".search-form");
 

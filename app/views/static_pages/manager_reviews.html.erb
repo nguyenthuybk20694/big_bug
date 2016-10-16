@@ -1,0 +1,29 @@
+<h2>List Review</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Reviewer</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= link_to review.title,review %></td>
+        <td>
+            <div class="movie">
+				<figure class="movie-poster" style="width:200px;height:auto"><%= image_tag review.image%></figure>
+			</div>
+        </td>
+        <td>
+            <%= link_to review.user.email,review.user %>
+            <%= link_to review.user.name,review.user %>
+            <figure class="movie-poster" style="width:50px;height:auto"><%= avatar review.user.avatar%></figure>
+        </td>
+        <td><%= link_to "", edit_review_path(review),:class => 'fa fa-edit fa-2x' %><%= link_to '', review,:class => 'fa fa-trash fa-2x', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

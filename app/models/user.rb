@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
   acts_as_voter
   has_many :reviews, dependent: :destroy
-  has_many :comments
+  has_many :comments,dependent: :destroy
   mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable, :validatable
 
   validates_integrity_of  :avatar
   validates_processing_of :avatar
-  has_many :authorizations
+  has_many :authorizations,dependent: :destroy
   
   def self.from_omniauth(auth, current_user)
     authorization = Authorization.where(:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret).first_or_initialize
