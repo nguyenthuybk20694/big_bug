@@ -13,9 +13,9 @@
       <tr>
         <td>
         <figure style="width:100px; height: auto"><%= avatar user.avatar%></figure></td>
-        <td><%= link_to user.name, user%></td>
+        <td><%= link_to user.name, admin_user_path(user)%></td>
         <td><%= user.email%></td>
-        <td><%= link_to "", edit_user_path(user),:class => 'fa fa-edit fa-2x' %><%= link_to '', user,:class => 'fa fa-trash fa-2x', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "", edit_admin_user_path(user),:class => 'fa fa-edit fa-2x' %><%= link_to '', admin_user_path(user),:class => 'fa fa-trash fa-2x', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

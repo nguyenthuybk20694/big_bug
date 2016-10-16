@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :reviews
+  end
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :users
+  namespace :admin do
+    resources :reviews
+    resources :users
+  end
   resources :reviews do
     member do
       get 'like', to: "reviews#like"
