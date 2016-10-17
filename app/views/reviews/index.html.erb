@@ -1,6 +1,7 @@
-					<div class="page">
+
 						<div class="breadcrumbs">
 							<a href="index.html">Home</a>
+						</div>
 						<!--	<span>Movie Review</span>-->
 						<!--</div>-->
 
@@ -22,10 +23,9 @@
 							 <% @reviews.each_with_index do |review,index| %>
 							<div class="movie">
 
-								<figure class="movie-poster" ><a href="reviews/<%=review.id%>"><%= image_tag review.image%></a></figure>
+								<figure class="movie-poster" ><a href="reviews/<%=review.id%>"><%= image_for_review review.image%></a></figure>
 								<div class="movie-title"><a href="reviews/<%=review.id%>"><%=review.title%></a></div>
 							</div>
 							<%end%>
 						</div> <!-- .movie-list -->
-						<%= will_paginate @reviews %>
-					</div>
+						<%= will_paginate @reviews,:style => 'float:left' %>

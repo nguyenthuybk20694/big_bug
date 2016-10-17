@@ -5,15 +5,19 @@
     </div>
     <div class="col-md-6 col-md-offset-3">
         <h1><%=@review.title%></h1>
+        <div class='content'></div><%=@review.content.html_safe%></div>
         <div class="row">
-          <div class="vote">
+          <div class="vote_count col-md-1">
             <%= @review.get_likes.size %>
-             <% if current_user.liked? @review %>
-              <%= link_to raw('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'), unlike_review_path(@review), method: :get, remote: true %>
-            <% else %>
-              <%= link_to raw('<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>'), like_review_path(@review), method: :get, remote: true %>
-            <% end %>
           </div> 
+        
+          <div class="votes col-md-2">
+            <% if current_user.liked? @review %>
+              <%= link_to "", unlike_review_path(@review), method: :get, remote: true, class: 'unlike_review fa fa-thumbs-o-up' %>
+            <% else %>
+              <%= link_to "", like_review_path(@review), method: :get, remote: true, class: 'like_review fa fa-thumbs-up' %>
+            <% end %>
+          </div>
         </div>
         <hr>
         <% @review.comments.each do |c| %>
