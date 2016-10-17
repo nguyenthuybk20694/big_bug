@@ -247,13 +247,24 @@ address {
 p {
   margin-top: 0; }
 
-form input, form textarea, form select {
+form input, form select {
   outline: none;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
   outline: none; 
   /*width: 83%;*/
+}
+.comment-div{
+ margin-top: 135px;
+}
+form textarea{
+  outline: none;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none; 
+  width: 83%;
 }
 form select {
   -webkit-appearance: none;
