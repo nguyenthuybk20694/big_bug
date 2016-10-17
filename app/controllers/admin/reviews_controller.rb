@@ -1,11 +1,9 @@
-class Admin::ReviewsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_admin
+class Admin::ReviewsController < Admin::AdminController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = Review.all.paginate(:page => params[:page],:per_page => 10);
   end
 
   # GET /reviews/1

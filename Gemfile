@@ -24,6 +24,7 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'will_paginate',"3.0.7"
 group :development, :test do
   gem "sqlite3"
   gem "web-console", "2.0.0.beta3"

@@ -14,7 +14,7 @@
         <td><%= link_to review.title,review,:target => '_blank' %></td>
         <td>
             <div class="movie">
-				<figure class="movie-poster" style="width:200px;height:auto"><%= image_tag review.image%></figure>
+				<figure class="movie-poster" style="width:200px;height:auto"><%= image_for_review review.image%></figure>
 			</div>
         </td>
         <td>
@@ -27,3 +27,4 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @users %>
