@@ -1,5 +1,6 @@
-					<div class="page">
+
 						<div class="breadcrumbs">
+<<<<<<< HEAD
 							<!--<a href="index.html">Home</a>-->
 							
 							
@@ -7,6 +8,10 @@
 							<!--  <%= text_field_tag :search, params[:search], placeholder: "Search review" %>-->
 							<!--  <%= submit_tag "Search" %>-->
 							<!--<% end %>-->
+=======
+							<a href="index.html">Home</a>
+						</div>
+>>>>>>> fd43b7f7af0e4f2b937f37db384fa59cd4d58a48
 						<!--	<span>Movie Review</span>-->
 						<!--</div>-->
 
@@ -28,9 +33,9 @@
 							 <% @reviews.each_with_index do |review,index| %>
 							<div class="movie">
 
-								<figure class="movie-poster" ><a href="reviews/<%=review.id%>"><%= image_tag review.image%></a></figure>
+								<figure class="movie-poster" ><a href="reviews/<%=review.id%>"><%= image_for_review review.image%></a></figure>
 								<div class="movie-title"><a href="reviews/<%=review.id%>"><%=review.title%></a></div>
 							</div>
 							<%end%>
 						</div> <!-- .movie-list -->
-					</div>
+						<%= will_paginate @reviews,:style => 'float:left' %>

@@ -9,6 +9,12 @@ class CommentsController < ApplicationController
         end
     end
     
+    def destroy
+        @review = Review.find params[:review_id]
+        @comment = @review.comments.find params[:id]
+        @comment.destroy
+        redirect_to @review
+ end
     private 
     def comment_params
         params.require(:comment).permit(:body, :review_id,:user_id)    

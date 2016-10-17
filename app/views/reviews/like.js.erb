@@ -1,5 +1,5 @@
 $('.like_review').bind('ajax:success', function(){
    $(this).parent().parent().find('.vote_count').html('<%= escape_javascript @review.votes_for.size.to_s %>');
    $(this).closest('.like_review').hide();
-   $(this).closest('.votes').html(' <%= link_to "Unlike", unlike_review_path(@review), remote: true, method: :get, class: 'unlike_review btn btn-warning' %>');
+   $(this).closest('.votes').html(' <%= link_to "", unlike_review_path(@review), remote: true, method: :get, class: 'unlike_review fa fa-thumbs-o-up' %>');
 });

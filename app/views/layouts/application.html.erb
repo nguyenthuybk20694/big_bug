@@ -37,12 +37,17 @@
 							<li class="menu-item <%=current_item_link profile_path%>"><%=link_to t("application.profile"),profile_path%></li>
 							<li class="menu-item <%=current_item_link destroy_user_session_url%>"><%=link_to t("application.logout"),destroy_user_session_url, method: :delete%></li>
 							<% end %>
+							<li class="menu-item">
+								
+							</li>
 						</ul> <!-- .menu -->
-						<form action="#" class="search-form">
-							<input type="text" placeholder="Search...">
+						
+						<%= form_tag(reviews_path, :method => "get", class: "search-form") do %>
+							<%= text_field_tag :search, params[:search], placeholder: "Search review" %>
 							<button><i class="fa fa-search"></i></button>
 							<div class="" style="height: 38px;position: absolute;width: 35px;top: 50px;z-index: 10000;cursor: pointer;"></div>
-						</form>
+						<% end %>
+						
 					</div> <!-- .main-navigation -->
 
 					<div class="mobile-navigation"></div>
@@ -50,6 +55,7 @@
 			</header>
 			<main class="main-content">
 				<div class="container">
+					<div class="page">
 					<% flash.each do |name, msg| %>
   					<% if msg.is_a?(String) %>
     					<div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
@@ -59,6 +65,7 @@
   					<% end %>
 					<% end %>
 					<%= yield %>
+					</div>
 				</div>
 			</main>
 			<footer class="site-footer">

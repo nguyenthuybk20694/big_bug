@@ -14,3 +14,12 @@
  *= require bootsy
  *= require_tree .
  */
+
+#search-form{
+	position: relative
+}
+#search-form i{
+	position: absolute;
+    top: 12px;
+    right: 11px;
+}

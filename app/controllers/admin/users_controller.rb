@@ -1,13 +1,10 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  before_action :require_admin
   # GET /users
   # GET /users.json
   def index
-    @users = User.where('is_admin is null', :is_admin)
+    @users = User.where.not(:is_admin => true).paginate(:page => params[:page],:per_page => 10)
   end
-
   # GET /users/1
   # GET /users/1.json
   def show
