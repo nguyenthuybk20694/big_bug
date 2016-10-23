@@ -29,12 +29,15 @@
 						<div class="movie-list">
 							 <% @reviews.each_with_index do |review,index| %>
 							<div class="movie">
-
-								<figure class="movie-poster" ><a href="reviews/<%=review.id%>"><%= image_for_review review.image%></a></figure>
-								<div class="movie-title"><a href="reviews/<%=review.id%>"><%=review.title%></a></div>
-								<div class="center">
-									<%= review.get_likes.size %>
-									<div class="like_review fa fa-thumbs-up"></div>
+								<div class="item">
+									<figure class="movie-poster" ><a href="reviews/<%=review.id%>"><%= image_for_review review.image%></a></figure>
+									<div class="description">
+										<div class="movie-title"><a href="reviews/<%=review.id%>"><%=review.title%></a></div>
+										<div class="like_area">
+											<%= review.get_likes.size %>
+											<div class="like_review fa fa-thumbs-up"></div>
+										</div>
+									</div>
 								</div>
 							</div>
 							<%end%>
