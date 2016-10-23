@@ -23,4 +23,39 @@
         font-size: 16px;
         font-weight: 700;
     }
+    .movie{
+        border: 1px solid #ccc;
+    }
+}
+.movie-list{
+    .movie{
+        .item{
+            &:hover{
+                border: 1px solid red;
+            }
+            border: 1px solid #ccc;
+            box-shadow: 1px 1px 1px #888888;
+            figure{
+                padding:10px;
+            }
+            .movie-title{
+                text-align:center;
+                a{
+                    color: red;
+                    font-weight:bold;
+                }
+            }
+            .like_area{
+                color:blue;
+                margin-left:20px;
+                margin-bottom:10px;
+            }
+            a{
+                &:hover{
+                    
+                }
+            }
+        }
+     
+    }
 }
