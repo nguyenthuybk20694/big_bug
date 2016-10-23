@@ -77,89 +77,32 @@ h3 {
   margin-bottom: 15px;
 }
 
-
-@import "bootstrap-sprockets";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-$gray-medium-light: #eaeaea;
-
-/* universal */
-body {
-  background: #F1F3FA;
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-  margin-top: 10px;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
-
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-h2 {
-  font-size: 1.8em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: #777;
-}
-h3 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: #777;
-}
-/* Profile container */
-.profile {
-  margin: 20px 0;
-}
-
-/* Profile sidebar */
-.profile-sidebar {
-  padding: 20px 0 10px 0;
-  background: #fff;
-}
-
-.profile-usertitle {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.profile-usertitle-name {
-  color: #5a7391;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 7px;
-}
-
-.profile-usertitle-email {
-  color: #5b9bd1;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
+// .like_review {
+//   font: bold 11px Arial;
+//   text-decoration: none;
+//   background-color: #EEEEEE;
+//   color: #333333;
+//   padding: 2px 6px 2px 6px;
+//   border-top: 1px solid #CCCCCC;
+//   border-right: 1px solid #333333;
+//   border-bottom: 1px solid #333333;
+//   border-left: 1px solid #CCCCCC;
+// }
+// .unlike_review {
+//   font: bold 11px Arial;
+//   text-decoration: none;
+//   background-color: #EEEEEE;
+//   color: #333333;
+//   padding: 2px 6px 2px 6px;
+//   border-top: 1px solid #CCCCCC;
+//   border-right: 1px solid #333333;
+//   border-bottom: 1px solid #333333;
+//   border-left: 1px solid #CCCCCC;
+// }
 figure img{
  width: inherit;
 }
+
 .fa-thumbs-o-up{
   color: #ccc;
 }

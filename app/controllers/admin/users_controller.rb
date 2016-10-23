@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::AdminController
   # GET /users
   # GET /users.json
   def index
-    @users = User.where.not(:is_admin => true).paginate(:page => params[:page],:per_page => 10)
+   @users = User.where('name != "admin"').paginate(:page => params[:page],:per_page => 10)
   end
   # GET /users/1
   # GET /users/1.json

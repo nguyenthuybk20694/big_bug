@@ -42,11 +42,15 @@
         <% else %>
             <p style="color:red">dang nhap de comment</p>
         <% end %>
+        
+        
+        
+        <div class ="update">
+            <% if  @review.user == current_user %>
+                <%= link_to 'Edit', edit_review_path(@review) %> |
+                <%= link_to "Delete",review_path(@review), method: :delete, data: {confirm: t("application.confirm")} %> |
+            <% end %>
+            <%= link_to 'Back', reviews_path %>
+        </div>
     </div>
 </div>
-
-<% if  @review.user == current_user %>
-    <%= link_to 'Edit', edit_review_path(@review) %> |
-    <%= link_to "Delete",review_path(@review), method: :delete, data: {confirm: t("application.confirm")} %> |
-<% end %>
-<%= link_to 'Back', reviews_path %>
