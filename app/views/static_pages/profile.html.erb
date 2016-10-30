@@ -2,8 +2,8 @@
 <!--<%= image_tag @user.avatar%>-->
 
 <!--<br>-->
-<%= @user.name %>
-<div class="row profile">
+<div class="row">
+  <div class="profile col-md-4">
     <div class="profile-sidebar">
         <div class="profile-userpic center">
           <%= avatar @user.avatar%>
@@ -20,4 +20,24 @@
           </div>
         </div>
     </div>
+  </div>
+  <div class="col-md-8">
+		<div class="movie-list">
+			 <h1>Your reviews</h1>
+				<% @user.reviews.each_with_index do |review,index| %>
+				  <div class="movie">
+						<div class="item">
+							<figure class="movie-poster" ><a href="reviews/<%=review.id%>"><%= image_for_review review.image%></a></figure>
+							<div class="description">
+								<div class="movie-title"><a href="reviews/<%=review.id%>"><%=review.title%></a></div>
+									<div class="like_area">
+										<%= review.get_likes.size %>
+										<div class="like_review fa fa-thumbs-up"></div>
+									</div>
+							</div>
+						</div>
+					</div>
+				<%end%>
+		</div> <!-- .movie-list -->
+  </div>
 </div>
