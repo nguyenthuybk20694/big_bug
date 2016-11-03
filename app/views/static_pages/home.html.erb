@@ -11,40 +11,24 @@
 							</div>
 							<div class="col-md-3">
 								<div class="row">
+									<% @most_likes.each do |review| %>
 									<div class="col-sm-6 col-md-12">
 										<div class="latest-movie">
-											<a href="#"><img src="dummy/thumb-1.jpg" alt="Movie 1"></a>
+											<a href="reviews/<%=review.id%>"><%= image_for_review review.image%></a>
 										</div>
 									</div>
-									<div class="col-sm-6 col-md-12">
-										<div class="latest-movie">
-											<a href="#"><img src="dummy/thumb-2.jpg" alt="Movie 2"></a>
-										</div>
-									</div>
+									<%end%>
 								</div>
 							</div>
 						</div> <!-- .row -->
 						<div class="row">
-							<div class="col-sm-6 col-md-3">
-								<div class="latest-movie">
-									<a href="#"><img src="dummy/thumb-3.jpg" alt="Movie 3"></a>
+							<% @new_reviews.each do |review| %>
+								<div class="col-sm-6 col-md-3">
+									<div class="latest-movie">
+										<a href="reviews/<%=review.id%>"><%= image_for_review review.image%></a>
+									</div>
 								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="latest-movie">
-									<a href="#"><img src="dummy/thumb-4.jpg" alt="Movie 4"></a>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="latest-movie">
-									<a href="#"><img src="dummy/thumb-5.jpg" alt="Movie 5"></a>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="latest-movie">
-									<a href="#"><img src="dummy/thumb-6.jpg" alt="Movie 6"></a>
-								</div>
-							</div>
+							<%end%>
 						</div> <!-- .row -->
 						
 					
