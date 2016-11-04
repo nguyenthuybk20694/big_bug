@@ -2,23 +2,15 @@
 						<div class="breadcrumbs">
 							<a href="index.html">Home</a>
 						</div>
-						<!--	<span>Movie Review</span>-->
-						<!--</div>-->
-
-						<!--<div class="filters">-->
-						<!--	<select name="#" id="#" placeholder="Choose Category">-->
-						<!--		<option value="#">Action</option>-->
-						<!--		<option value="#">Drama</option>-->
-						<!--		<option value="#">Fantasy</option>-->
-						<!--		<option value="#">Horror</option>-->
-						<!--		<option value="#">Adventure</option>-->
-						<!--	</select>-->
-						<!--	<select name="#" id="#">-->
-						<!--		<option value="#">2012</option>-->
-						<!--		<option value="#">2013</option>-->
-						<!--		<option value="#">2014</option>-->
-						<!--	</select>-->
-						<!--</div>-->
+						<div class="filters">
+							<%= form_tag(reviews_path, :method => "get", class: "search-form") do %>
+								<%= text_field_tag :search, params[:search], placeholder: "Search review" %>
+								<select name="category_id" id="#" placeholder="Choose Category">
+								 <%= options_from_collection_for_select(Category.all, :id, :name) %>
+								</select>
+								<button style="background-color:#ccc">filter</button>
+							<%end%>
+						</div>
 						<div class="movie-list">
 							 <% @reviews.each_with_index do |review,index| %>
 							<div class="movie">
