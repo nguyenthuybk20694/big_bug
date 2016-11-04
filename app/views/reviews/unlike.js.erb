@@ -1,5 +1,6 @@
+
 $('.unlike_review').bind('ajax:success', function(){
-   $(this).parent().parent().find('.vote_count').html('<%= escape_javascript @review.votes_for.size.to_s %>');
-   $(this).closest('.unlike_review').hide();
-   $(this).closest('.votes').html(' <%= link_to "", like_review_path(@review), remote: true, method: :get, class: 'like_review fa fa-thumbs-up' %>');
+   $(this).parent().html('<%= escape_javascript @review.votes_for.size.to_s %>');
+   $('.vote .unlike_review').hide();
+   $('.vote').html(' <%= link_to raw('<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>'), like_review_path(@review), method: :get, remote: true, :class =>'like_review' %>');
 });

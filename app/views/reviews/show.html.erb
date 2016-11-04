@@ -7,22 +7,27 @@
         <h1><%=@review.title%></h1>
         <div class="content">
             <%=@review.content.html_safe%>
-        </div></div>
-        <div class="row">
-          <div class="vote_count col-md-1">
-            <%= @review.get_likes.size %>
-          </div> 
-        
-          <div class="votes col-md-2">
-            <% if current_user.liked? @review %>
-              <%= link_to "", unlike_review_path(@review), method: :get, remote: true, class: 'unlike_review fa fa-thumbs-o-up' %>
-            <% else %>
-              <%= link_to "", like_review_path(@review), method: :get, remote: true, class: 'like_review fa fa-thumbs-up' %>
-            <% end %>
-          </div>
         </div>
-        <hr>
-        <% @review.comments.each do |c| %>
+        
+        <div class="clearfix">
+            <div class="vote_count pull-left">
+                <%= @review.get_likes.size %>
+            </div> 
+            
+            <div class="votes pull-left">
+                <% if current_user.liked? @review %>
+                  <%= link_to "", unlike_review_path(@review), method: :get, remote: true, class: 'unlike_review fa fa-thumbs-o-up' %>
+                <% else %>
+                  <%= link_to "", like_review_path(@review), method: :get, remote: true, class: 'like_review fa fa-thumbs-up' %>
+                <% end %>
+            </div> 
+        </div>
+    </div>
+        
+    <div class="col-md-8 col-md-offset-2"><hr></div>
+        
+        <div id="comments_<%= @review.id %>" class="col-md-8 col-md-offset-2">
+            <% @review.comments.each do |c| %>
             <p class="comments">
                 <% if c.user %>
                     <strong><%= c.user.name %> : </strong>
@@ -40,19 +45,22 @@
                     <%= link_to "", edit_review_comment_path(c.review, c), class: "delete glyphicon glyphicon-cog"  %>
                 <% end %>
             </p>
-        <% end %>
-        <% if current_user %>
-            <%= form_for [@review, @comment ||= Comment.new] do |f| %>
-                <div class="field">
-                    <%= f.text_area :body %>
-                </div>
-                <div class="actions">
-                    <%= f.submit %>
-                </div>
             <% end %>
-        <% else %>
-            <p style="color:red">dang nhap de comment</p>
-        <% end %>
+            <% if current_user %>
+                <%= form_for([@review, @comment ||= Comment.new] , remote: true) do |f| %>
+                    <div class="field">
+                        <%= f.text_area :body , :required => 'required', id: "comment_content_#{@review.id}"%>
+                    </div>
+                    <div class="actions">
+                        <%= f.submit %>
+                    </div>
+                <% end %>
+            <% else %>
+                <p style="color:red">dang nhap de comment</p>
+            <% end %>
+        </div>
+        
+       
     </div>
 </div>
 
