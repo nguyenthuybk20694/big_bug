@@ -10,14 +10,16 @@
             <%=@review.content.html_safe%>
         </div>
         <div class="own_name">
-            <% @review.user.name %>
+            Tác giả: <span><%= @review.user.name %></span>
         </div>
         <div class="time">
-            <% if @review.created_at > Time.now.beginning_of_day %>
-                <%="#{time_ago_in_words(@review.created_at)} ago"%>  
-            <% else %>
-                <%= @review.created_at.strftime("%b %d, %Y") %>
-            <% end %>
+            Ngày tạo: <span>
+                <% if @review.created_at > Time.now.beginning_of_day %>
+                    <%="#{time_ago_in_words(@review.created_at)} ago"%>  
+                <% else %>
+                    <%= @review.created_at.strftime("%b %d, %Y") %>
+                <% end %>
+            </span>
         </div>
         <div class="clearfix">
           <div class="vote_count pull-left">
