@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103083026) do
+ActiveRecord::Schema.define(version: 20161104160508) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20161103083026) do
     t.integer  "image_gallery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -63,6 +71,7 @@ ActiveRecord::Schema.define(version: 20161103083026) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+    t.integer  "category_id"
   end
 
   add_index "reviews", ["cached_votes_down"], name: "index_reviews_on_cached_votes_down"
@@ -72,6 +81,7 @@ ActiveRecord::Schema.define(version: 20161103083026) do
   add_index "reviews", ["cached_weighted_average"], name: "index_reviews_on_cached_weighted_average"
   add_index "reviews", ["cached_weighted_score"], name: "index_reviews_on_cached_weighted_score"
   add_index "reviews", ["cached_weighted_total"], name: "index_reviews_on_cached_weighted_total"
+  add_index "reviews", ["category_id"], name: "index_reviews_on_category_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

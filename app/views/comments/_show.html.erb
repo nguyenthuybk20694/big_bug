@@ -1,0 +1,18 @@
+            <p class="comments" id='comment<%=comment.id%>'>
+                <% if comment.user %>
+                    <strong><%= comment.user.name %> : </strong>
+                <% else %>
+                    <strong>noname : </strong>
+                <% end %>
+                
+                <%= comment.body %>
+                <% if comment.user == current_user %>
+                    <%= link_to '', [comment.review, comment],
+                       data: {confirm: 'Are you sure?'},
+                       :method => :delete,
+                       :remote => true,
+                       :class => 'delete glyphicon glyphicon-remove'
+                       %>
+                    <%= link_to "", edit_review_comment_path(comment.review, comment), class: "delete glyphicon glyphicon-cog",remote: true  %>
+                <% end %>
+            </p>

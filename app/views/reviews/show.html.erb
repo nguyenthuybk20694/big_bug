@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 <div class="row review-show-page">
     <div class="col-md-12 text-center">
@@ -7,52 +8,54 @@
         <h1><%=@review.title%></h1>
         <div class="content">
             <%=@review.content.html_safe%>
-        </div></div>
-        <div class="row">
-          <div class="vote_count col-md-1">
+        </div>
+        <div class="own_name">
+            Tác giả: <span><%= @review.user.name %></span>
+        </div>
+        <div class="time">
+            Ngày tạo: <span>
+                <% if @review.created_at > Time.now.beginning_of_day %>
+                    <%="#{time_ago_in_words(@review.created_at)} ago"%>  
+                <% else %>
+                    <%= @review.created_at.strftime("%b %d, %Y") %>
+                <% end %>
+            </span>
+        </div>
+        <div class="clearfix">
+          <div class="vote_count pull-left">
             <%= @review.get_likes.size %>
           </div> 
         
-          <div class="votes col-md-2">
+          <div class="votes pull-left">
             <% if current_user.liked? @review %>
-              <%= link_to "", unlike_review_path(@review), method: :get, remote: true, class: 'unlike_review fa fa-thumbs-o-up' %>
+              <%= link_to "", unlike_review_path(@review), method: :get, remote: true, class: 'unlike_review fa fa-thumbs-up' %>
             <% else %>
-              <%= link_to "", like_review_path(@review), method: :get, remote: true, class: 'like_review fa fa-thumbs-up' %>
+              <%= link_to "", like_review_path(@review), method: :get, remote: true, class: 'like_review fa fa-thumbs-o-up' %>
             <% end %>
           </div>
         </div>
         <hr>
-        <% @review.comments.each do |c| %>
-            <p class="comments">
-                <% if c.user %>
-                    <strong><%= c.user.name %> : </strong>
-                <% else %>
-                    <strong>noname : </strong>
+    </div>
+    
+        
+        <div class="col-md-8 col-md-offset-2">
+            <% @comments =  @review.comments%>
+            <div id="comments"><%=render 'comments/comment'%></div>
+            <% if current_user %>
+                <%= form_for [@review,@comment ||= Comment.new],remote: true do |f| %>
+                    <div class="field">
+                        <%= f.text_area :body,  required: true %>
+                    </div>
+                    <div class="actions">
+                        <%= f.submit %>
+                    </div>
                 <% end %>
-                
-                <%= c.body %>
-                <% if c.user == current_user %>
-                    <%= link_to '', [c.review, c],
-                       data: {confirm: 'Are you sure?'},
-                       :method => :delete,
-                       :class => 'delete glyphicon glyphicon-remove' 
-                       %>
-                    <%= link_to "", edit_review_comment_path(c.review, c), class: "delete glyphicon glyphicon-cog"  %>
-                <% end %>
-            </p>
-        <% end %>
-        <% if current_user %>
-            <%= form_for [@review, @comment ||= Comment.new] do |f| %>
-                <div class="field">
-                    <%= f.text_area :body %>
-                </div>
-                <div class="actions">
-                    <%= f.submit %>
-                </div>
-            <% end %>
-        <% else %>
-            <p style="color:red">dang nhap de comment</p>
-        <% end %>
+            <% else %>
+                <p style="color:red">dang nhap de comment</p>
+            <% end %>    
+        </div>
+        
+        
     </div>
 </div>
 

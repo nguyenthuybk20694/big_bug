@@ -2,6 +2,7 @@ class Review < ActiveRecord::Base
 	acts_as_votable
 	belongs_to :user
 	has_many :comments,dependent: :destroy
+	belongs_to :categories
 	include Bootsy::Container
 	
     validates :title,  presence: true, length: { minimum: 1 }

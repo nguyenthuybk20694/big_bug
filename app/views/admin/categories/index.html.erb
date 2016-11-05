@@ -1,0 +1,23 @@
+<h2>List Review</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%=category.id %></td>
+        <td><%=category.name %></td>
+        <td><%=category.description %></td>
+        <td><%= link_to "", edit_admin_category_path(category),:class => 'fa fa-edit fa-2x' %><%= link_to '', admin_category_path(category),:class => 'fa fa-trash fa-2x', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "", new_admin_category_path,:class => 'fa fa-edit fa-2x' %>
+<%= will_paginate @categories %>
