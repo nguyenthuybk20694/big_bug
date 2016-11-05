@@ -16,9 +16,9 @@
             
             <div class="votes pull-left">
                 <% if current_user.liked? @review %>
-                  <%= link_to "", unlike_review_path(@review), method: :get, remote: true, class: 'unlike_review fa fa-thumbs-o-up' %>
+                  <%= link_to "", unlike_review_path(@review), method: :get, remote: true, class: 'unlike_review fa fa-thumbs-up' %>
                 <% else %>
-                  <%= link_to "", like_review_path(@review), method: :get, remote: true, class: 'like_review fa fa-thumbs-up' %>
+                  <%= link_to "", like_review_path(@review), method: :get, remote: true, class: 'like_review fa fa-thumbs-o-up' %>
                 <% end %>
             </div> 
         </div>
@@ -47,7 +47,7 @@
             </p>
             <% end %>
             <% if current_user %>
-                <%= form_for([@review, @comment ||= Comment.new] , remote: true) do |f| %>
+                <%= form_for([@review, @comment ||= Comment.new] , remote: false) do |f| %>
                     <div class="field">
                         <%= f.text_area :body , :required => 'required', id: "comment_content_#{@review.id}"%>
                     </div>
