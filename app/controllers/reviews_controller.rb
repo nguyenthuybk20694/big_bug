@@ -6,9 +6,10 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     if params[:category_id] != "0" && params[:category_id] != nil
-      category_id = params[:category_id]
-      @filters = Review.where(:category_id => category_id)
+      @category_id = params[:category_id]
+      @filters = Review.where(:category_id => @category_id)
     else
+      @category_id = 0
       @filters = Review.all
     end
     @filters = @filters.search(params[:search])

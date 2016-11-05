@@ -5,9 +5,7 @@
 						<div class="filters">
 							<%= form_tag(reviews_path, :method => "get", class: "search-form") do %>
 								<%= text_field_tag :search, params[:search], placeholder: "Search review" %>
-								<select name="category_id" id="#" placeholder="Choose Category">
-								 <%= options_from_collection_for_select(Category.all, :id, :name) %>
-								</select>
+								<%=select_tag 'category_id', content_tag(:option,'select one...',:value=>"0")+options_from_collection_for_select(Category.all, :id, :name,@category_id) %>
 								<button style="background-color:#ccc">filter</button>
 							<%end%>
 						</div>

@@ -1708,3 +1708,6 @@ ul.arrow {
     padding-top: 30px; 
     margin-left: 89px;
   }
+.dropdown-menu a{
+  border-right: none!important;
+}

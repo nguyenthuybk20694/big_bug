@@ -30,16 +30,28 @@
 							<li class="menu-item <%=current_item_link new_user_session_path%>"><%=link_to t("application.login"),new_user_session_path%></li>
 							<% else %>
 							<% if current_user.is_admin %>
-								<li class="menu-item <%=current_item_link admin_users_path%>"><%=link_to t("Manager_users"),admin_users_path%></li>
-								<li class="menu-item <%=current_item_link admin_reviews_path%>"><%=link_to t("Manager_reviews"),admin_reviews_path%></li>
+							<li class="menu-item">
+								<ul class="menu">
+							      <li class="dropdown">
+								       <a class="dropdown-toggle"
+								           data-toggle="dropdown"
+								           href="#">
+								            Admin manager
+								            <b class="caret"></b>
+								        </a>
+								        <ul class="dropdown-menu">
+								          <li class="menu-item <%=current_item_link admin_users_path%>"><%=link_to t("Manager_users"),admin_users_path%></li>
+										  <li class="menu-item <%=current_item_link admin_reviews_path%>"><%=link_to t("Manager_reviews"),admin_reviews_path%></li>
+										  <li class="menu-item <%=current_item_link admin_categories_path%>"><%=link_to t("Manager_categoty"),admin_categories_path%></li>
+								        </ul>
+      								</li>
+    							</ul>
+							</li>
 							<%end%>
 							<li class="menu-item <%=current_item_link new_review_path%>"><%=link_to t("application.new_review"),new_review_path%></li>
 							<li class="menu-item <%=current_item_link profile_path%>"><%=link_to t("application.profile"),profile_path%></li>
 							<li class="menu-item <%=current_item_link destroy_user_session_url%>"><%=link_to t("application.logout"),destroy_user_session_url, method: :delete%></li>
 							<% end %>
-							<li class="menu-item">
-								
-							</li>
 						</ul> <!-- .menu -->
 						
 						<%= form_tag(reviews_path, :method => "get", class: "search-form") do %>
