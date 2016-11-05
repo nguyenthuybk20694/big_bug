@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     
     def update
         @comment.update (comment_params)
-        redirect_to @review
+        render 'update'
     end
     
     def destroy

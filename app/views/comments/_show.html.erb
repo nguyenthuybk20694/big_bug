@@ -13,6 +13,6 @@
                        :remote => true,
                        :class => 'delete glyphicon glyphicon-remove'
                        %>
-                    <%= link_to "", edit_review_comment_path(comment.review, comment), class: "delete glyphicon glyphicon-cog"  %>
+                    <%= link_to "", edit_review_comment_path(comment.review, comment), class: "delete glyphicon glyphicon-cog",remote: true  %>
                 <% end %>
             </p>

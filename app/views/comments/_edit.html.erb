@@ -1,7 +1,5 @@
-<%= form_for [@review, @comment] do |f| %>
-
+<%= form_for [@review, @comment],remote: true do |f| %>
   <div class="form-group">
-    <%= f.label :title %>
     <%= f.text_field :body, autofocus: true, class: "form-control" %>
   </div>
   
