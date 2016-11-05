@@ -9,6 +9,16 @@
         <div class="content">
             <%=@review.content.html_safe%>
         </div>
+        <div class="own_name">
+            <% @review.user.name %>
+        </div>
+        <div class="time">
+            <% if @review.created_at > Time.now.beginning_of_day %>
+                <%="#{time_ago_in_words(@review.created_at)} ago"%>  
+            <% else %>
+                <%= @review.created_at.strftime("%b %d, %Y") %>
+            <% end %>
+        </div>
         <div class="clearfix">
           <div class="vote_count pull-left">
             <%= @review.get_likes.size %>
@@ -32,7 +42,7 @@
             <% if current_user %>
                 <%= form_for [@review,@comment ||= Comment.new],remote: true do |f| %>
                     <div class="field">
-                        <%= f.text_area :body %>
+                        <%= f.text_area :body,  required: true %>
                     </div>
                     <div class="actions">
                         <%= f.submit %>
