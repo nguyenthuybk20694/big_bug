@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
             @comment = @review.comments.create(comment_params)
             @comment.user_id = current_user.id
             @comment.save
-            redirect_to @review
+            render 'save'
         end
     end
     
@@ -22,8 +22,9 @@ class CommentsController < ApplicationController
     end
     
     def destroy
+        @id = @comment.id
         @comment.destroy
-        redirect_to @review
+        render 'destroy'
     end
     
     private 

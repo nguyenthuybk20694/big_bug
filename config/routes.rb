@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :reviews
     resources :users
+    resources :categories
   end
   resources :reviews do
     member do

@@ -1,11 +1,18 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :like, :unlike]
+   before_action :authenticate_user!, only: [:edit, :update, :destroy, :show]
   before_action :check_owned, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :show]
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.search(params[:search]).paginate(:page => params[:page],:per_page => 10)
+    if params[:category_id] != "0" && params[:category_id] != nil
+      category_id = params[:category_id]
+      @filters = Review.where(:category_id => category_id)
+    else
+      @filters = Review.all
+    end
+    @filters = @filters.search(params[:search])
+    @reviews = @filters.paginate(:page => params[:page],:per_page => 10)
   end
 
   # GET /reviews/1
@@ -94,6 +101,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:image, :title, :content,:created_at)
+      params.require(:review).permit(:image, :title, :content,:created_at,:category_id)
     end
 end
